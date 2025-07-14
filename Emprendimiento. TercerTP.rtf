@@ -1,0 +1,1567 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red255\green0\blue0;\red0\green176\blue80;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs32\lang10 Importante.Esto se encuentra en visual studio code, codigo java. Materia POO\par
+DML\par
+\cf0\fs22 -- Inserta registros de clientes en la tabla 'clientes'.\par
+INSERT INTO clientes (nombre, apellido, email, telefono, direccion, instagram) VALUES\par
+('Sofia', 'Colque', 'sofia.soyyo@hotmail.com', '1165432100', 'Av. Las Flores 100, Palermo', '@sofia_soyyolover'),\par
+('Paula', 'Gomez', 'paulagomez345@gmail.com', '1150009988', 'Calle del Sol 25, Caballito', '@paula_skincare'),\par
+('Laura', 'Mamani', 'laura.mami21@gmail.com', '1133221144', 'Rivadavia 876, Almagro', '@laura_tumami_arg'),\par
+('Micaela', 'Fernandez', 'micaelaSeSe@hotmail.com', '1177665544', 'calle 2 3124, Berazategui', '@mica_sese_fan'),\par
+('Romina', 'Perez', 'romi.perez88@gmail.com', '1122334455', 'Av. Mitre 500, Avellaneda', '@romi_belleza_ok'),\par
+('Diego', 'Gimenez', 'diegogimez_ok@hotmail.com', '1133445566', 'Calle 12 1234, Quilmes', '@diego.create_quilmes'),\par
+('Valeria', 'Rodriguez', 'vale.rodri@yahoo.com.ar', '1144556677', 'Libertad 890, Lan\'fas', '@valeria_lanus_beauty'),\par
+('Lucas', 'Torres', 'lucas_torres_arg@gmail.com', '1155667788', 'San Mart\'edn 200, Florencio Varela', '@lucas.torres.argen'),\par
+('Florencia', 'Diaz', 'flor.diaz.natural@hotmail.com', '1166778899', 'Espa\'f1a 300, Lomas de Zamora', '@florencia_diazlife'),\par
+('Gonzalo', 'Acosta', 'gonza.acosta7@gmail.com', '1177889900', 'Moreno 1500, Solano', '@gonza.acosta.oksi'),\par
+('Carla', 'Lopez', 'carli_lopez_siempre@hotmail.com', '1188990011', 'Calle 25 de Mayo 700, Bernal', '@carla.lolopez.bernal'),\par
+('Martin', 'Sanchez', 'tincho.sanchez.ok@gmail.com', '1199001122', 'Roca 450, Almirante Brown', '@martin_san_oficial'),\par
+('Sofia', 'Martinez', 'sofimartinez_arg@yahoo.com.ar', '1111223344', 'Av. Calchaqu\'ed 1800, Cruce Varela', '@sofi.m.kiss'),\par
+('Ezequiel', 'Ruiz', 'eze.ruiz.conurba@gmail.com', '1122334400', 'Garibaldi 100, Quilmes Oeste', '@eze.ruiz.online'),\par
+('Andrea', 'Blanco', 'andy_blanco_7@hotmail.com', '1133445500', 'Larrea 600, Banfield', '@andy_white.banfield'),\par
+('Pablo', 'Peralta', 'pablo.peralta.ok@gmail.com', '1144556600', 'Mitre 1200, Monte Grande', '@pablo_peralta_ventas'),\par
+('Marina', 'Castro', 'mari.castro.belleza@yahoo.com.ar', '1155667700', 'Las Heras 200, Adrogu\'e9', '@marina.castro.life'),\par
+('Federico', 'Nu\'f1ez', 'fede.nunez.arg@gmail.com', '1166778800', 'Eva Per\'f3n 900, Burzaco', '@fede.gree.burzaco'),\par
+('Julieta', 'Herrera', 'juli.herrera.conur@hotmail.com', '1177889900', 'Calle Maip\'fa 400, Berazategui', '@julieta.ventas.natura'),\par
+('Ricardo', 'Medina', 'ricardo.medina.ventas@gmail.com', '1188990000', 'Independencia 1100, Glew', '@ricardo_dina_online');\par
+\par
+-- Inserta registros de productos en la tabla 'productos' con precios actualizados para Argentina.\par
+INSERT INTO productos (nombre, descripcion, precio_costo, precio_venta, stock) VALUES\par
+('Hidratante Corporal Frambuesa y Pimienta Rosa', 'Crema hidratante 400ml, fragancia intensa', 8500.00, 13900.00, 50),\par
+('Perfume Humor Proprio', 'Eau de Toilette femenino 75ml, floral y amaderado', 25000.00, 42000.00, 30),\par
+('Base Fluida HD', 'Base de alta cobertura FPS 15, tono medio', 12000.00, 20500.00, 40),\par
+('Labial Cremoso Nude', 'Labial cremoso hidratante, color nude cl\'e1sico', 4500.00, 7800.00, 60),\par
+('Shampoo Murumuru Reconstruccion', 'Shampoo reparador para cabello da\'f1ado 300ml', 7000.00, 11800.00, 45),\par
+('Jabones Cremosos Surtidos x5', 'Caja con 5 jabones cremosos, varias fragancias', 5000.00, 8500.00, 70),\par
+('Desodorante Roll-on Invisible', 'Desodorante antitranspirante 72hs, sin manchas', 3000.00, 5200.00, 80),\par
+('Aceite Trif\'e1sico Pitanga', 'Aceite corporal post-ba\'f1o 200ml, fragancia c\'edtrica', 10000.00, 16800.00, 35),\par
+('M\'e1scara de Pesta\'f1as Una', 'M\'e1scara para volumen y alargamiento', 7500.00, 12900.00, 25),\par
+('Crema de Manos Casta\'f1a', 'Crema hidratante para manos 75g, nutrici\'f3n intensa', 4000.00, 6900.00, 90);\par
+\par
+-- Inserta registros de pedidos en la tabla 'pedidos'.\par
+\par
+INSERT INTO pedidos (id_cliente, fecha_pedido, estado_pedido, total) VALUES\par
+(1, '2025-06-09 14:00:00', 'Confirmado', 0.00), \par
+(2, '2025-06-10 16:30:00', 'Pendiente', 0.00),  \par
+(1, '2025-06-05 10:15:00', 'Enviado', 0.00),   \par
+(3, '2025-06-15 11:00:00', 'Pendiente', 0.00),   \par
+(5, '2025-06-18 09:30:00', 'Confirmado', 0.00),  \par
+(6, '2025-06-19 15:45:00', 'Enviado', 0.00),  \par
+(8, '2025-06-20 12:00:00', 'Pendiente', 0.00),   \par
+(10, '2025-06-21 10:00:00', 'Confirmado', 0.00), \par
+(4, '2025-06-12 17:00:00', 'Entregado', 0.00),  \par
+(15, '2025-06-20 18:00:00', 'Pendiente', 0.00);  \par
+\par
+-- Inserta registros de detalle de pedidos en la tabla 'detalle_pedidos'.\par
+\par
+INSERT INTO detalle_pedidos (id_pedido, id_producto, cantidad) VALUES\par
+(1, 1, 2), \par
+(1, 4, 1), \par
+(2, 2, 1), \par
+(2, 6, 1), \par
+(3, 3, 1), \par
+(3, 1, 1),  \par
+(4, 5, 2), \par
+(5, 7, 3), \par
+(5, 1, 1), \par
+(6, 8, 1), \par
+(7, 9, 1), \par
+(7, 4, 1), \par
+(8, 10, 2), \par
+(9, 2, 1), \par
+(9, 6, 1),\par
+(10, 5, 1);\par
+\cf1\fs32 DDL\cf0\fs22\par
+DROP TABLE IF EXISTS detalle_pedidos;\par
+DROP TABLE IF EXISTS pedidos;\par
+DROP TABLE IF EXISTS productos;\par
+DROP TABLE IF EXISTS clientes;\par
+CREATE TABLE clientes (\par
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY, \par
+    nombre VARCHAR(65) NOT NULL,            \par
+    apellido VARCHAR(65) NOT NULL,           \par
+    email VARCHAR(75) NOT NULL,              \par
+    telefono VARCHAR(20) NOT NULL,            \par
+    direccion VARCHAR(120) NOT NULL,         \par
+    instagram VARCHAR(50)                    \par
+);\par
+\par
+CREATE TABLE productos (\par
+    id_producto INT AUTO_INCREMENT PRIMARY KEY, \par
+    nombre VARCHAR(65) NOT NULL,               \par
+    descripcion VARCHAR(80) NOT NULL,          \par
+    precio_costo DOUBLE NOT NULL,              \par
+    precio_venta DOUBLE NOT NULL,             \par
+    stock INT NOT NULL                         \par
+);\par
+\par
+CREATE TABLE pedidos (\par
+    id_pedido INT AUTO_INCREMENT PRIMARY KEY,                                    \par
+    id_cliente INT NOT NULL,                                                      \par
+    fecha_pedido DATETIME NOT NULL,                                              \par
+    estado_pedido ENUM('Pendiente', 'Confirmado', 'Enviado', 'Entregado', 'Cancelado') NOT NULL DEFAULT 'Pendiente', \par
+    total DOUBLE NOT NULL,                                                       \par
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)                      \par
+);\par
+\par
+CREATE TABLE detalle_pedidos (\par
+    id_pedido INT,                                      \par
+    id_producto INT,                                       \par
+    cantidad INT NOT NULL,                                           \par
+    PRIMARY KEY (id_pedido, id_producto),                   \par
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),   \par
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) \par
+);\par
+\cf1\b\fs32 queries\cf0\b0\fs22\par
+- 1. Listar todos los clientes junto con sus datos de contacto.\par
+SELECT\par
+    c.id_cliente,\par
+    c.nombre,\par
+    c.apellido,\par
+    c.email,\par
+    c.telefono,\par
+    c.instagram\par
+FROM\par
+    clientes c;\par
+\par
+-- 2. Obtener la cantidad de stock por cada producto, ordenado de menor a mayor stock.\par
+SELECT\par
+    p.id_producto,\par
+    p.nombre,\par
+    p.stock AS cantidad_disponible\par
+FROM\par
+    productos p\par
+ORDER BY\par
+    cantidad_disponible ASC;\par
+\par
+-- 3. Mostrar pedidos en estado 'Pendiente' junto con el nombre y apellido del cliente.\par
+SELECT\par
+    pe.id_pedido,\par
+    cl.nombre AS nombre_cliente,\par
+    cl.apellido AS apellido_cliente,\par
+    pe.fecha_pedido,\par
+    pe.estado_pedido\par
+FROM\par
+    pedidos pe\par
+JOIN\par
+    clientes cl ON pe.id_cliente = cl.id_cliente\par
+WHERE\par
+    pe.estado_pedido = 'Pendiente';\par
+\par
+-- 4. Listar productos que tienen un precio de venta mayor a $10000.\par
+SELECT DISTINCT\par
+    p.nombre,\par
+    p.precio_venta\par
+FROM\par
+    productos p\par
+WHERE\par
+    p.precio_venta > 10000;\par
+\par
+-- 5. Obtener el total de ingresos generados por cada producto vendido, ordenado de mayor a menor ingreso.\par
+SELECT\par
+    p.nombre AS nombre_producto,\par
+    SUM(dp.cantidad * p.precio_venta) AS ingresos_generados\par
+FROM\par
+    detalle_pedidos dp\par
+JOIN\par
+    productos p ON dp.id_producto = p.id_producto\par
+GROUP BY\par
+    p.nombre\par
+ORDER BY\par
+    ingresos_generados DESC;\par
+\par
+-- 6. Mostrar el historial de pedidos de un cliente espec\'edfico (ej. Sofia Colque), ordenado por fecha de pedido.\par
+SELECT\par
+    pe.id_pedido,\par
+    pe.fecha_pedido,\par
+    pe.estado_pedido,\par
+    pe.total\par
+FROM\par
+    pedidos pe\par
+JOIN\par
+    clientes cl ON pe.id_cliente = cl.id_cliente\par
+WHERE\par
+    cl.nombre = 'Sofia' AND cl.apellido = 'Colque'\par
+ORDER BY\par
+    pe.fecha_pedido DESC;\par
+\par
+-- 7. Listar los productos (nombre y cantidad) de un pedido particular (ej. pedido ID 1).\par
+SELECT\par
+    dp.id_pedido,\par
+    pr.nombre AS nombre_producto,\par
+    dp.cantidad\par
+FROM\par
+    detalle_pedidos dp\par
+JOIN\par
+    productos pr ON dp.id_producto = pr.id_producto\par
+WHERE\par
+    dp.id_pedido = 1;\par
+\par
+-- 8. Contar el n\'famero de pedidos por cada estado.\par
+SELECT\par
+    estado_pedido,\par
+    COUNT(id_pedido) AS cantidad_de_pedidos\par
+FROM\par
+    pedidos\par
+GROUP BY\par
+    estado_pedido;\par
+\par
+-- 9. Clientes que han comprado un 'Perfume Humor Proprio'.\par
+SELECT DISTINCT\par
+    cl.nombre,\par
+    cl.apellido,\par
+    cl.instagram\par
+FROM\par
+    clientes cl\par
+JOIN\par
+    pedidos pe ON cl.id_cliente = pe.id_cliente\par
+JOIN\par
+    detalle_pedidos dp ON pe.id_pedido = dp.id_pedido\par
+JOIN\par
+    productos pr ON dp.id_producto = pr.id_producto\par
+WHERE\par
+    pr.nombre = 'Perfume Humor Proprio';\par
+\par
+-- 10. Calcular el valor promedio de los pedidos que est\'e1n 'Confirmado'.\par
+SELECT\par
+    AVG(total) AS promedio_pedidos_confirmados\par
+FROM\par
+    pedidos\par
+WHERE\par
+    estado_pedido = 'Confirmado';\par
+\par
+-- 11. Clientes que han realizado m\'e1s de un pedido y el total gastado por cada uno.\par
+SELECT\par
+    c.id_cliente,\par
+    c.nombre,\par
+    c.apellido,\par
+    COUNT(p.id_pedido) AS total_pedidos_realizados,\par
+    SUM(p.total) AS total_gastado\par
+FROM\par
+    clientes c\par
+JOIN\par
+    pedidos p ON c.id_cliente = p.id_cliente\par
+GROUP BY\par
+    c.id_cliente, c.nombre, c.apellido\par
+HAVING\par
+    total_pedidos_realizados > 1\par
+ORDER BY\par
+    total_gastado DESC;\par
+\par
+-- 12. Productos que tienen menos de 30 unidades en stock y han sido vendidos al menos una vez.\par
+SELECT\par
+    pr.id_producto,\par
+    pr.nombre,\par
+    pr.stock,\par
+    SUM(dp.cantidad) AS cantidad_total_vendida\par
+FROM\par
+    productos pr\par
+JOIN\par
+    detalle_pedidos dp ON pr.id_producto = dp.id_producto\par
+WHERE\par
+    pr.stock < 30\par
+GROUP BY\par
+    pr.id_producto, pr.nombre, pr.stock\par
+HAVING\par
+    cantidad_total_vendida > 0\par
+ORDER BY\par
+    pr.stock ASC;\par
+\par
+-- 13. Pedidos que incluyen al menos 2 productos diferentes.\par
+SELECT\par
+    p.id_pedido,\par
+    c.nombre AS nombre_cliente,\par
+    c.apellido AS apellido_cliente,\par
+    p.fecha_pedido,\par
+    p.total,\par
+    COUNT(dp.id_producto) AS numero_productos_diferentes\par
+FROM\par
+    pedidos p\par
+JOIN\par
+    clientes c ON p.id_cliente = c.id_cliente\par
+JOIN\par
+    detalle_pedidos dp ON p.id_pedido = dp.id_pedido\par
+GROUP BY\par
+    p.id_pedido, c.nombre, c.apellido, p.fecha_pedido, p.total\par
+HAVING\par
+    numero_productos_diferentes >= 2\par
+ORDER BY\par
+    numero_productos_diferentes DESC, p.fecha_pedido DESC;\par
+\par
+-- 14. Ingresos totales por mes para el a\'f1o 2025.\par
+SELECT\par
+    DATE_FORMAT(fecha_pedido, '%Y-%m') AS anio_mes,\par
+    SUM(total) AS ingresos_mensuales\par
+FROM\par
+    pedidos\par
+WHERE\par
+    YEAR(fecha_pedido) = 2025\par
+GROUP BY\par
+    anio_mes\par
+ORDER BY\par
+    anio_mes ASC;\par
+\par
+-- 15. Clientes que no han realizado ning\'fan pedido.\par
+SELECT\par
+    c.id_cliente,\par
+    c.nombre,\par
+    c.apellido,\par
+    c.email\par
+FROM\par
+    clientes c\par
+LEFT JOIN\par
+    pedidos p ON c.id_cliente = p.id_cliente\par
+WHERE\par
+    p.id_pedido IS NULL;\par
+\par
+-- 16. Producto m\'e1s vendido (en cantidad de unidades) y su ingreso total.\par
+SELECT\par
+    pr.nombre AS nombre_producto,\par
+    SUM(dp.cantidad) AS total_unidades_vendidas,\par
+    SUM(dp.cantidad * pr.precio_venta) AS ingreso_total_producto\par
+FROM\par
+    productos pr\par
+JOIN\par
+    detalle_pedidos dp ON pr.id_producto = dp.id_producto\par
+GROUP BY\par
+    pr.nombre\par
+ORDER BY\par
+    total_unidades_vendidas DESC\par
+LIMIT 1;\par
+\par
+-- 17. Listar todos los clientes y los productos que han comprado.\par
+\par
+SELECT\par
+    c.nombre AS nombre_cliente,\par
+    c.apellido AS apellido_cliente,\par
+    pr.nombre AS nombre_producto,\par
+    dp.cantidad AS cantidad_comprada,\par
+    p.fecha_pedido AS fecha_del_pedido\par
+FROM\par
+    clientes c\par
+JOIN\par
+    pedidos p ON c.id_cliente = p.id_cliente\par
+JOIN\par
+    detalle_pedidos dp ON p.id_pedido = dp.id_pedido\par
+JOIN\par
+    productos pr ON dp.id_producto = pr.id_producto\par
+ORDER BY\par
+    c.apellido, c.nombre, p.fecha_pedido DESC, pr.nombre;\par
+\par
+-- 18. Valor promedio de los productos en stock.\par
+SELECT\par
+    AVG(precio_venta) AS precio_venta_promedio_stock\par
+FROM\par
+    productos\par
+WHERE\par
+    stock > 0;\par
+\par
+-- 19. El pedido m\'e1s caro y el cliente que lo realiz\'f3.\par
+SELECT\par
+    p.id_pedido,\par
+    c.nombre AS nombre_cliente,\par
+    c.apellido AS apellido_cliente,\par
+    p.fecha_pedido,\par
+    p.total\par
+FROM\par
+    pedidos p\par
+JOIN\par
+    clientes c ON p.id_cliente = c.id_cliente\par
+ORDER BY\par
+    p.total DESC\par
+LIMIT 1;\par
+\par
+-- 20. Historial completo de pedidos incluyendo detalles de productos para un cliente espec\'edfico (ej. 'Sofia Colque').\par
+SELECT\par
+    c.nombre AS nombre_cliente,\par
+    c.apellido AS apellido_cliente,\par
+    p.id_pedido,\par
+    p.fecha_pedido,\par
+    p.estado_pedido,\par
+    p.total AS total_pedido,\par
+    pr.nombre AS nombre_producto,\par
+    dp.cantidad AS cantidad_producto,\par
+    (dp.cantidad * pr.precio_venta) AS subtotal_producto\par
+FROM\par
+    clientes c\par
+JOIN\par
+    pedidos p ON c.id_cliente = p.id_cliente\par
+JOIN\par
+    detalle_pedidos dp ON p.id_pedido = dp.id_pedido\par
+JOIN\par
+    productos pr ON dp.id_producto = pr.id_producto\par
+WHERE\par
+    c.nombre = 'Sofia' AND c.apellido = 'Colque'\par
+ORDER BY\par
+    p.fecha_pedido DESC, p.id_pedido ASC, pr.nombre ASC;eries\par
+\par
+\cf1\fs28 Como complete el application properties\cf0\fs22\par
+spring.datasource.url=jdbc:mysql://sql.freedb.tech:3306/freedb_emprendimiento_natura\par
+spring.datasource.username=freedb_LuluLudmi\par
+sprispring.datasource.url=jdbc:mysql://127.0.0.1:3306/emprendimiento_natura\par
+\par
+ spring.datasource.username=root\par
+\par
+ spring.datasource.password=ng.datasource.password=\par
+\par
+
+\pard\sa200\sl240\slmult1\cf1\b\fs32 Entidades\cf0\b0\fs22\par
+package emprendimiento.natura.Gilma.Aguada.entidades;\par
+import lombok.AllArgsConstructor;\par
+import lombok.Data;\par
+import lombok.NoArgsConstructor;\par
+\par
+@Data\par
+@AllArgsConstructor\par
+@NoArgsConstructor\par
+\par
+public class Cliente \{\par
+   \par
+    private int idCliente;\par
+    private String nombre;\par
+    private String apellido;\par
+    private String email;\par
+    private String telefono;\par
+    private String direccion;\par
+    private String instagram;\par
+\par
+\}\par
+package emprendimiento.natura.Gilma.Aguada.entidades;\par
+import lombok.AllArgsConstructor;\par
+import lombok.Data;\par
+import lombok.NoArgsConstructor;\par
+import java.time.LocalDateTime;\par
+import emprendimiento.natura.gilma.aguada.enums.EstadoPedido;\par
+\par
+@Data\par
+@AllArgsConstructor\par
+@NoArgsConstructor\par
+public class Pedido \{\par
+    private int idPedido;\par
+    private int idCliente;\par
+    private LocalDateTime fechaPedido;\par
+    private EstadoPedido estadoPedido;\par
+    private double total;\par
+\}\par
+package emprendimiento.natura.Gilma.Aguada.entidades;\par
+import lombok.AllArgsConstructor;\par
+import lombok.Data;\par
+import lombok.NoArgsConstructor;\par
+@Data\par
+@AllArgsConstructor\par
+@NoArgsConstructor\par
+\par
+public class Producto \{\par
+    private int idProducto;\par
+    private String nombre;\par
+    private String descripcion;\par
+    private double precioCosto;\par
+    private double precioVenta;\par
+    private int stock;\par
+\}\par
+package emprendimiento.natura.Gilma.Aguada.entidades;\par
+import lombok.AllArgsConstructor;\par
+import lombok.Data;\par
+import lombok.NoArgsConstructor;\par
+\par
+@Data\par
+@AllArgsConstructor\par
+@NoArgsConstructor\par
+\par
+public class DetallePedido \{\par
+    private int idPedido;\par
+    private int idProducto;\par
+    private int cantidad;\par
+\par
+\par
+\}\par
+\par
+\cf1\b\fs32 Emuns\cf0\b0\fs22\par
+package emprendimiento.natura.Gilma.Aguada.enums;\par
+\par
+public enum EstadoPedido \{\par
+    PENDIENTE("Pendiente"),\par
+    CONFIRMADO("Confirmado"),\par
+    ENVIADO("Enviado"),\par
+    ENTREGADO("Entregado"),\par
+    CANCELADO("Cancelado");\par
+\par
+    private final String dbValue;\par
+\par
+    EstadoPedido(String dbValue) \{\par
+        this.dbValue = dbValue;\par
+    \}\par
+\par
+    public String getDbValue() \{\par
+        return dbValue;\par
+    \}\par
+\par
+    // Opcional: un m\'e9todo est\'e1tico para obtener el enum a partir del valor de la DB\par
+    public static EstadoPedido fromDbValue(String value) \{\par
+        for (EstadoPedido estado : EstadoPedido.values()) \{\par
+            if (estado.dbValue.equalsIgnoreCase(value)) \{\par
+                return estado;\par
+            \}\par
+        \}\par
+        throw new IllegalArgumentException("Estado de pedido desconocido: " + value);\par
+    \}\par
+\}\par
+\cf2\b\fs32 Repositorys\par
+\cf0\b0\fs22 package emprendimiento.natura.gilma.aguada.repositories.interfaces;\par
+\par
+import java.sql.SQLException;\par
+import java.util.List;\par
+import emprendimiento.natura.gilma.aguada.entidades.Cliente; \par
+\par
+// Esta interfaz define los m\'e9todos est\'e1ndar de acceso a datos para la entidad Cliente.\par
+\par
+public interface I_ClienteRepository \{\par
+\par
+    /**\par
+     * Crea un nuevo registro de cliente en la base de datos.\par
+     * @param cliente El objeto Cliente a guardar.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    void create(Cliente cliente) throws SQLException;\par
+\par
+    /**\par
+     * Busca un cliente por su ID.\par
+     * @param id El ID del cliente a buscar.\par
+     * @return El objeto Cliente si se encuentra, o null si no existe.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    Cliente findById(int id_cliente) throws SQLException;\par
+\par
+    /**\par
+     * Obtiene una lista de todos los clientes.\par
+     * @return Una lista de objetos Cliente.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Cliente> findAll() throws SQLException;\par
+\par
+    /**\par
+     * Actualiza un registro de cliente existente en la base de datos.\par
+     * @param cliente El objeto Cliente con los datos actualizados.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la actualizaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int update(Cliente cliente) throws SQLException;\par
+\par
+    /**\par
+     * Elimina un registro de cliente de la base de datos por su ID.\par
+     * @param id El ID del cliente a eliminar.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la eliminaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int delete(int id_cliente) throws SQLException;\par
+\par
+    /**\par
+     * Busca clientes por una parte de su apellido.\par
+     * @param apellido La cadena a buscar en el apellido del cliente.\par
+     * @return Una lista de objetos Cliente que coinciden con el apellido.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Cliente> findByApellido(String apellido) throws SQLException;\par
+\par
+    // M\'e9todos espec\'edficos para Cliente (ej. buscar por email, ya que es un campo que tienes)\par
+    /**\par
+     * Busca un cliente por su direcci\'f3n de email.\par
+     * @param email La direcci\'f3n de email del cliente a buscar.\par
+     * @return El objeto Cliente si se encuentra, o null si no existe.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    Cliente findByEmail(String email) throws SQLException;\par
+\}\par
+\cf1\b\fs28 I_DetallePedidoRepository\cf0\b0\fs22\par
+package emprendimiento.natura.gilma.aguada.repositories.interfaces;\par
+import java.sql.SQLException;\par
+import java.util.List;\par
+import emprendimiento.natura.gilma.aguada.entidades.DetallePedido; // Importa tu entidad DetallePedido\par
+\par
+// Esta interfaz define los m\'e9todos est\'e1ndar de acceso a datos para la entidad DetallePedido.\par
+public interface I_DetallePedidoRepository \{\par
+\par
+    /**\par
+     * Crea un nuevo registro de detalle de pedido en la base de datos.\par
+     * @param detallePedido El objeto DetallePedido a guardar.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    void create(DetallePedido detallePedido) throws SQLException;\par
+\par
+    /**\par
+     * Busca un detalle de pedido por su ID de pedido y ID de producto (clave compuesta).\par
+     * @param idPedido El ID del pedido al que pertenece el detalle.\par
+     * @param idProducto El ID del producto en el detalle.\par
+     * @return El objeto DetallePedido si se encuentra, o null si no existe.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    DetallePedido findById(int id_pedido, int id_producto) throws SQLException;\par
+\par
+    /**\par
+     * Obtiene una lista de todos los detalles de pedidos.\par
+     * @return Una lista de objetos DetallePedido.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<DetallePedido> findAll() throws SQLException;\par
+\par
+    /**\par
+     * Actualiza un registro de detalle de pedido existente en la base de datos.\par
+     * @param detallePedido El objeto DetallePedido con los datos actualizados.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la actualizaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int update(DetallePedido detallePedido) throws SQLException;\par
+\par
+    /**\par
+     * Elimina un registro de detalle de pedido de la base de datos por su ID de pedido y ID de producto (clave compuesta).\par
+     * @param idPedido El ID del pedido al que pertenece el detalle a eliminar.\par
+     * @param idProducto El ID del producto en el detalle a eliminar.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la eliminaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int delete(int id_pedido, int id_producto) throws SQLException;\par
+\par
+    // M\'e9todos espec\'edficos para DetallePedido (ej. buscar por ID de pedido)\par
+    /**\par
+     * Busca todos los detalles de un pedido espec\'edfico.\par
+     * @param idPedido El ID del pedido.\par
+     * @return Una lista de objetos DetallePedido que pertenecen a ese pedido.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<DetallePedido> findByPedido(int id_pedido) throws SQLException;\par
+\}\par
+\cf1\b\fs32 I_PedidoRepository                                                                                                                                                                   \cf0\b0\fs22 package emprendimiento.natura.gilma.aguada.repositories.interfaces;\par
+\par
+import java.sql.SQLException;\par
+import java.util.List;\par
+import emprendimiento.natura.gilma.aguada.entidades.Pedido; // Importa tu entidad Pedido\par
+\par
+// Esta interfaz define los m\'e9todos est\'e1ndar de acceso a datos para la entidad Pedido.\par
+public interface I_PedidoRepository \{\par
+\par
+    /**\par
+     * Crea un nuevo registro de pedido en la base de datos.\par
+     * @param pedido El objeto Pedido a guardar.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    void create(Pedido pedido) throws SQLException;\par
+\par
+    /**\par
+     * Busca un pedido por su ID.\par
+     * @param id El ID del pedido a buscar.\par
+     * @return El objeto Pedido si se encuentra, o null si no existe.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    Pedido findById(int id_pedido) throws SQLException;\par
+\par
+    /**\par
+     * Obtiene una lista de todos los pedidos.\par
+     * @return Una lista de objetos Pedido.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Pedido> findAll() throws SQLException;\par
+\par
+    /**\par
+     * Actualiza un registro de pedido existente en la base de datos.\par
+     * @param pedido El objeto Pedido con los datos actualizados.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la actualizaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int update(Pedido pedido) throws SQLException;\par
+\par
+    /**\par
+     * Elimina un registro de pedido de la base de datos por su ID.\par
+     * @param id El ID del pedido a eliminar.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la eliminaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int delete(int id_pedido) throws SQLException;\par
+\par
+    // M\'e9todos espec\'edficos para Pedido (ej. buscar por cliente, por estado, por fecha)\par
+    /**\par
+     * Busca pedidos asociados a un cliente espec\'edfico.\par
+     * @param idCliente El ID del cliente.\par
+     * @return Una lista de objetos Pedido realizados por el cliente.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Pedido> findByCliente(int id_cliente) throws SQLException;\par
+\par
+    /**\par
+     * Busca pedidos por su estado.\par
+     * @param estado El estado del pedido (usando tu enum EstadoPedido).\par
+     * @return Una lista de objetos Pedido con el estado especificado.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Pedido> findByEstado(emprendimiento.natura.gilma.aguada.enums.EstadoPedido estado) throws SQLException;\par
+\} \par
+\cf1\b\fs32 I_ProductoRep\'f3sitory\cf0\b0\fs22\par
+package emprendimiento.natura.gilma.aguada.repositories.interfaces;\par
+\par
+import java.sql.SQLException;\par
+import java.util.List;\par
+import emprendimiento.natura.gilma.aguada.entidades.Producto; // Importa tu entidad Producto\par
+\par
+// Esta interfaz define los m\'e9todos est\'e1ndar de acceso a datos para la entidad Producto.\par
+public interface I_ProductoRepository \{\par
+\par
+    /**\par
+     * Crea un nuevo registro de producto en la base de datos.\par
+     * @param producto El objeto Producto a guardar.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    void create(Producto producto) throws SQLException;\par
+\par
+    /**\par
+     * Busca un producto por su ID.\par
+     * @param id El ID del producto a buscar.\par
+     * @return El objeto Producto si se encuentra, o null si no existe.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    Producto findById(int id_producto) throws SQLException;\par
+\par
+    /**\par
+     * Obtiene una lista de todos los productos.\par
+     * @return Una lista de objetos Producto.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Producto> findAll() throws SQLException;\par
+\par
+    /**\par
+     * Actualiza un registro de producto existente en la base de datos.\par
+     * @param producto El objeto Producto con los datos actualizados.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la actualizaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int update(Producto producto) throws SQLException;\par
+\par
+    /**\par
+     * Elimina un registro de producto de la base de datos por su ID.\par
+     * @param id El ID del producto a eliminar.\par
+     * @return El n\'famero de filas afectadas (normalmente 1 si la eliminaci\'f3n fue exitosa).\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    int delete(int id_producto) throws SQLException;\par
+\par
+    // M\'e9todos espec\'edficos para Producto (ej. buscar por nombre o por rango de precio)\par
+    /**\par
+     * Busca productos por su nombre (o parte del nombre).\par
+     * @param nombre El nombre o parte del nombre del producto a buscar.\par
+     * @return Una lista de objetos Producto que coinciden con el nombre.\par
+     * @throws SQLException Si ocurre un error de acceso a la base de datos.\par
+     */\par
+    List<Producto> findByNombre(String nombre) throws SQLException;\par
+\}\par
+\par
+\cf2\b\fs32 DAOs\par
+\fs22 package emprendimiento.natura.gilma.aguada.repositories; // Ajustado a tu estructura\par
+\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.sql.Statement;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+import javax.sql.DataSource;\par
+\par
+import org.springframework.stereotype.Repository;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.Cliente; // Ajustado a tu estructura\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_ClienteRepository; // Ajustado a tu estructura\par
+\par
+@Repository\par
+public class ClienteDAO implements I_ClienteRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Consultas SQL para la tabla 'clientes'\par
+    private static final String SQL_CREATE =\par
+        "INSERT INTO clientes (nombre, apellido, email, telefono, direccion, instagram) VALUES (?, ?, ?, ?, ?, ?)";\par
+    private static final String SQL_FIND_BY_ID =\par
+        "SELECT id_cliente, nombre, apellido, email, telefono, direccion, instagram FROM clientes WHERE id_cliente = ?";\par
+    private static final String SQL_FIND_ALL =\par
+        "SELECT id_cliente, nombre, apellido, email, telefono, direccion, instagram FROM clientes";\par
+    private static final String SQL_UPDATE =\par
+        "UPDATE clientes SET nombre = ?, apellido = ?, email = ?, telefono = ?, direccion = ?, instagram = ? WHERE id_cliente = ?";\par
+    private static final String SQL_DELETE =\par
+        "DELETE FROM clientes WHERE id_cliente = ?";\par
+    private static final String SQL_FIND_BY_APELLIDO =\par
+        "SELECT id_cliente, nombre, apellido, email, telefono, direccion, instagram FROM clientes WHERE apellido LIKE ?";\par
+    private static final String SQL_FIND_BY_EMAIL =\par
+        "SELECT id_cliente, nombre, apellido, email, telefono, direccion, instagram FROM clientes WHERE email = ?";\par
+\par
+    public ClienteDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    @Override\par
+    public void create(Cliente cliente) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_CREATE, Statement.RETURN_GENERATED_KEYS)) \{\par
+\par
+            ps.setString(1, cliente.getNombre());\par
+            ps.setString(2, cliente.getApellido());\par
+            ps.setString(3, cliente.getEmail());\par
+            ps.setString(4, cliente.getTelefono());\par
+            ps.setString(5, cliente.getDireccion());\par
+            ps.setString(6, cliente.getInstagram());\par
+\par
+            ps.executeUpdate();\par
+\par
+            try (ResultSet keys = ps.getGeneratedKeys()) \{\par
+                if (keys.next()) \{\par
+                    cliente.setIdCliente(keys.getInt(1)); // Asigna el ID autogenerado\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public Cliente findById(int idCliente) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ID)) \{\par
+            ps.setInt(1, idCliente);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs);\par
+                \}\par
+            \}\par
+        \}\par
+        return null;\par
+    \}\par
+\par
+    @Override\par
+    public List<Cliente> findAll() throws SQLException \{\par
+        List<Cliente> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{\par
+            while (rs.next()) \{\par
+                lista.add(mapRow(rs));\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    @Override\par
+    public int update(Cliente cliente) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+\par
+            ps.setString(1, cliente.getNombre());\par
+            ps.setString(2, cliente.getApellido());\par
+            ps.setString(3, cliente.getEmail());\par
+            ps.setString(4, cliente.getTelefono());\par
+            ps.setString(5, cliente.getDireccion());\par
+            ps.setString(6, cliente.getInstagram());\par
+            ps.setInt(7, cliente.getIdCliente()); // ID para la cl\'e1usula WHERE\par
+\par
+\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idCliente) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idCliente);\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<Cliente> findByApellido(String apellido) throws SQLException \{\par
+        List<Cliente> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_APELLIDO)) \{\par
+            ps.setString(1, "%" + apellido + "%"); // B\'fasqueda por parte del apellido\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    lista.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    @Override\par
+    public Cliente findByEmail(String email) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_EMAIL)) \{\par
+            ps.setString(1, email);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs);\par
+                \}\par
+            \}\par
+        \}\par
+        return null;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear una fila de ResultSet a un objeto Cliente\par
+    // tengo dudas de que este bien\par
+    private Cliente mapRow(ResultSet rs) throws SQLException \{\par
+        return new Cliente(\par
+            rs.getInt("id_cliente"), \par
+            rs.getString("nombre"),\par
+            rs.getString("apellido"),\par
+            rs.getString("email"),\par
+            rs.getString("telefono"),\par
+            rs.getString("direccion"),\par
+            rs.getString("instagram")\par
+        );\par
+    \}\par
+\cf0\b0\}\par
+package emprendimiento.natura.gilma.aguada.repositories;\par
+\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+import javax.sql.DataSource;\par
+\par
+import org.springframework.stereotype.Repository;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.DetallePedido; // Importa tu entidad DetallePedido\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_DetallePedidoRepository; // Importa la interfaz\par
+\par
+@Repository\par
+public class DetallePedidoDAO implements I_DetallePedidoRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Consultas SQL para la tabla 'detalle_pedidos'\par
+    //Dudas si esta bien \par
+    private static final String SQL_CREATE =\par
+        "INSERT INTO detalle_pedidos (id_pedido, id_producto, cantidad) VALUES (?, ?, ?)";\par
+    private static final String SQL_FIND_BY_ID =\par
+        "SELECT id_pedido, id_producto, cantidad FROM detalle_pedidos WHERE id_pedido = ? AND id_producto = ?";\par
+    private static final String SQL_FIND_ALL =\par
+        "SELECT id_pedido, id_producto, cantidad FROM detalle_pedidos";\par
+    private static final String SQL_UPDATE =\par
+        "UPDATE detalle_pedidos SET cantidad = ? WHERE id_pedido = ? AND id_producto = ?";\par
+    private static final String SQL_DELETE =\par
+        "DELETE FROM detalle_pedidos WHERE id_pedido = ? AND id_producto = ?";\par
+    private static final String SQL_FIND_BY_PEDIDO =\par
+        "SELECT id_pedido, id_producto, cantidad FROM detalle_pedidos WHERE id_pedido = ?";\par
+\par
+\par
+    public DetallePedidoDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    @Override\par
+    public void create(DetallePedido detallePedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             // No necesitamos RETURN_GENERATED_KEYS porque la clave es compuesta y se pasa\par
+             PreparedStatement ps = conn.prepareStatement(SQL_CREATE)) \{\par
+\par
+            ps.setInt(1, detallePedido.getIdPedido());\par
+            ps.setInt(2, detallePedido.getIdProducto());\par
+            ps.setInt(3, detallePedido.getCantidad());\par
+\par
+            ps.executeUpdate();\par
+            // No hay ID autogenerado para setear en el objeto\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public DetallePedido findById(int idPedido, int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ID)) \{\par
+            ps.setInt(1, idPedido);\par
+            ps.setInt(2, idProducto);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs);\par
+                \}\par
+            \}\par
+        \}\par
+        return null;\par
+    \}\par
+\par
+    @Override\par
+    public List<DetallePedido> findAll() throws SQLException \{\par
+        List<DetallePedido> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{\par
+            while (rs.next()) \{\par
+                lista.add(mapRow(rs));\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    @Override\par
+    public int update(DetallePedido detallePedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+\par
+            ps.setInt(1, detallePedido.getCantidad()); // Cantidad a actualizar\par
+            ps.setInt(2, detallePedido.getIdPedido());   // Parte de la clave para WHERE\par
+            ps.setInt(3, detallePedido.getIdProducto()); // Parte de la clave para WHERE\par
+\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idPedido, int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idPedido);\par
+            ps.setInt(2, idProducto);\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<DetallePedido> findByPedido(int idPedido) throws SQLException \{\par
+        List<DetallePedido> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_PEDIDO)) \{\par
+            ps.setInt(1, idPedido);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    lista.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear una fila de ResultSet a un objeto DetallePedido\par
+    private DetallePedido mapRow(ResultSet rs) throws SQLException \{\par
+        return new DetallePedido(\par
+            rs.getObject("idPedido", Integer.class),\par
+            rs.getObject("idProducto", Integer.class),\par
+            rs.getObject("cantidad", Integer.class)\par
+        );\par
+    \}\par
+\}\par
+package emprendimiento.natura.gilma.aguada.repositories;\par
+\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.sql.Statement;\par
+import java.time.LocalDateTime;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+import javax.sql.DataSource;\par
+\par
+import org.springframework.stereotype.Repository;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.Pedido;\par
+import emprendimiento.natura.gilma.aguada.enums.EstadoPedido;\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_PedidoRepository;\par
+\par
+@Repository\par
+public class PedidoDAO implements I_PedidoRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Consultas SQL para la tabla 'pedidos'\par
+    private static final String SQL_CREATE =\par
+        "INSERT INTO pedidos (id_cliente, fecha_pedido, estado_pedido, total) VALUES (?, ?, ?, ?)";\par
+    private static final String SQL_FIND_BY_ID =\par
+        "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos WHERE id_pedido = ?";\par
+    private static final String SQL_FIND_ALL =\par
+        "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos";\par
+    private static final String SQL_UPDATE =\par
+        "UPDATE pedidos SET id_cliente = ?, fecha_pedido = ?, estado_pedido = ?, total = ? WHERE id_pedido = ?";\par
+    private static final String SQL_DELETE =\par
+        "DELETE FROM pedidos WHERE id_pedido = ?";\par
+    private static final String SQL_FIND_BY_CLIENTE =\par
+        "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos WHERE id_cliente = ?";\par
+    private static final String SQL_FIND_BY_ESTADO =\par
+        "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos WHERE estado_pedido = ?";\par
+\par
+    public PedidoDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    @Override\par
+    public void create(Pedido pedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_CREATE, Statement.RETURN_GENERATED_KEYS)) \{\par
+\par
+            ps.setInt(1, pedido.getIdCliente());\par
+            ps.setObject(2, pedido.getFechaPedido()); // Usa setObject, el driver JDBC lo maneja\par
+\par
+            // Para estado_pedido (Enum a String de la base de datos)\par
+            // Aseg\'farate de que tu enum EstadoPedido tenga un m\'e9todo getDbValue()\par
+            ps.setString(3, pedido.getEstadoPedido().getDbValue());\par
+            ps.setDouble(4, pedido.getTotal());\par
+\par
+            ps.executeUpdate();\par
+\par
+            try (ResultSet keys = ps.getGeneratedKeys()) \{\par
+                if (keys.next()) \{\par
+                    // --- CORRECCI\'d3N AQU\'cd: Usar setId() en lugar de setIdPedido() ---\par
+                    pedido.setIdPedido(keys.getInt(1)); // Asigna el ID autogenerado\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public Pedido findById(int idPedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ID)) \{\par
+            ps.setInt(1, idPedido);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs);\par
+                \}\par
+            \}\par
+        \}\par
+        return null;\par
+    \}\par
+\par
+    @Override\par
+    public List<Pedido> findAll() throws SQLException \{\par
+        List<Pedido> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{\par
+            while (rs.next()) \{\par
+                lista.add(mapRow(rs));\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    @Override\par
+    public int update(Pedido pedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+\par
+            ps.setInt(1, pedido.getIdCliente());\par
+            ps.setObject(2, pedido.getFechaPedido());\par
+\par
+            ps.setString(3, pedido.getEstadoPedido().getDbValue());\par
+            ps.setDouble(4, pedido.getTotal());\par
+            // --- CORRECCI\'d3N AQU\'cd: Usar getId() en lugar de getIdPedido() ---\par
+            ps.setInt(5, pedido.getIdPedido()); // ID para la cl\'e1usula WHERE\par
+\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idPedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idPedido);\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<Pedido> findByCliente(int idCliente) throws SQLException \{\par
+        List<Pedido> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_CLIENTE)) \{\par
+            ps.setInt(1, idCliente);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    lista.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    @Override\par
+    public List<Pedido> findByEstado(EstadoPedido estado) throws SQLException \{\par
+        List<Pedido> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ESTADO)) \{\par
+            ps.setString(1, estado.getDbValue()); // Busca por el String de la DB\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    lista.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear una fila de ResultSet a un objeto Pedido\par
+    private Pedido mapRow(ResultSet rs) throws SQLException \{\par
+        LocalDateTime fechaPedido = rs.getObject("fechaPedido", LocalDateTime.class);\par
+\par
+        String estadoDbValue = rs.getString("estadoPedido");\par
+        EstadoPedido estadoPedido = null;\par
+        if (estadoDbValue != null) \{\par
+            estadoPedido = EstadoPedido.fromDbValue(estadoDbValue);\par
+        \}\par
+\par
+        return new Pedido(\par
+            rs.getInt("idPedido"), // Obtener como int directamente\par
+            rs.getInt("idCliente"), // Obtener como int directamente\par
+            fechaPedido,\par
+            estadoPedido,\par
+            rs.getDouble("total") // Obtener como double directamente\par
+        );\par
+    \}\par
+\}\par
+package emprendimiento.natura.gilma.aguada.repositories;\par
+\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.sql.Statement;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+import javax.sql.DataSource;\par
+\par
+import org.springframework.stereotype.Repository;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.Producto; // Importa tu entidad Producto\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_ProductoRepository; // Importa la interfaz\par
+\par
+@Repository\par
+public class ProductoDAO implements I_ProductoRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Consultas SQL para la tabla 'productos'\par
+    private static final String SQL_CREATE =\par
+        "INSERT INTO productos (nombre, descripcion, precio_costo, precio_venta, stock) VALUES (?, ?, ?, ?, ?)";\par
+    private static final String SQL_FIND_BY_ID =\par
+        "SELECT id_producto, nombre, descripcion, precio_costo, precio_venta, stock FROM productos WHERE id_producto = ?";\par
+    private static final String SQL_FIND_ALL =\par
+        "SELECT id_producto, nombre, descripcion, precio_costo, precio_venta, stock FROM productos";\par
+    private static final String SQL_UPDATE =\par
+        "UPDATE productos SET nombre = ?, descripcion = ?, precio_costo = ?, precio_venta = ?, stock = ? WHERE id_producto = ?";\par
+    private static final String SQL_DELETE =\par
+        "DELETE FROM productos WHERE id_producto = ?";\par
+    private static final String SQL_FIND_BY_NOMBRE =\par
+        "SELECT id_producto, nombre, descripcion, precio_costo, precio_venta, stock FROM productos WHERE nombre LIKE ?";\par
+\par
+    public ProductoDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    @Override\par
+    public void create(Producto producto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_CREATE, Statement.RETURN_GENERATED_KEYS)) \{\par
+\par
+            ps.setString(1, producto.getNombre());\par
+            ps.setString(2, producto.getDescripcion());\par
+            // --- CORRECCI\'d3N AQU\'cd: Usar getPrecioCosto() y getPrecioVenta() ---\par
+            ps.setDouble(3, producto.getPrecioCosto());\par
+            ps.setDouble(4, producto.getPrecioVenta());\par
+            ps.setInt(5, producto.getStock());\par
+\par
+            ps.executeUpdate();\par
+\par
+            try (ResultSet keys = ps.getGeneratedKeys()) \{\par
+                if (keys.next()) \{\par
+                    // --- CORRECCI\'d3N AQU\'cd: Usar setId() ---\par
+                    producto.setIdProducto(keys.getInt(1)); // Asigna el ID autogenerado\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public Producto findById(int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ID)) \{\par
+            ps.setInt(1, idProducto);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs);\par
+                \}\par
+            \}\par
+        \}\par
+        return null;\par
+    \}\par
+\par
+    @Override\par
+    public List<Producto> findAll() throws SQLException \{\par
+        List<Producto> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{\par
+            while (rs.next()) \{\par
+                lista.add(mapRow(rs));\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    @Override\par
+    public int update(Producto producto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+\par
+            ps.setString(1, producto.getNombre());\par
+            ps.setString(2, producto.getDescripcion());\par
+            // --- CORRECCI\'d3N AQU\'cd: Usar getPrecioCosto() y getPrecioVenta() ---\par
+            ps.setDouble(3, producto.getPrecioCosto());\par
+            ps.setDouble(4, producto.getPrecioVenta());\par
+            ps.setInt(5, producto.getStock());\par
+            // --- CORRECCI\'d3N AQU\'cd: Usar getId() ---\par
+            ps.setInt(6, producto.getIdProducto()); // ID para la cl\'e1usula WHERE\par
+\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idProducto);\par
+            int filasAfectadas = ps.executeUpdate();\par
+            return filasAfectadas;\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<Producto> findByNombre(String nombre) throws SQLException \{\par
+        List<Producto> lista = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_NOMBRE)) \{\par
+            ps.setString(1, "%" + nombre + "%"); // Usa LIKE para b\'fasquedas parciales\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    lista.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return lista;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear una fila de ResultSet a un objeto Producto\par
+    private Producto mapRow(ResultSet rs) throws SQLException \{\par
+        return new Producto(\par
+            // --- CORRECCI\'d3N AQU\'cd: Usar getInt/getDouble para evitar posibles warnings/problemas ---\par
+            rs.getInt("idProducto"),\par
+            rs.getString("nombre"),\par
+            rs.getString("descripcion"),\par
+            rs.getDouble("precioCosto"), // Usar getDouble directamente\par
+            rs.getDouble("precioVenta"), // Usar getDouble directamente\par
+            rs.getInt("stock")\par
+        );\par
+    \}\par
+\}\cf2\b\fs32\par
+\cf0\b0\fs22\par
+\cf2\b\fs32 TEstConnection\cf0\b0\fs22\par
+package emprendimiento.natura.gilma.aguada.test; \par
+\par
+import java.io.InputStream;\par
+import java.sql.Connection;\par
+import java.util.Properties;\par
+\par
+import com.zaxxer.hikari.HikariConfig;\par
+import com.zaxxer.hikari.HikariDataSource;\par
+\par
+public class TestConnection \{\par
+    public static void main(String[] args) \{\par
+        Properties props = new Properties();\par
+        //vamos a cargar el application.properties desde src/main/resources\par
+        //y lo vamos a guardar en un objeto del tipo Properties que carga el fichero de configuraci\'f3n\par
+\par
+        //InputStream representa un flujo de bytes\par
+        try (InputStream in = TestConnection.class //obtenemos el objeto class de esta clase\par
+                                            .getClassLoader() //obtiene la clase que carga las clases y los recursos\par
+                                            .getResourceAsStream("application.properties")) \{ //busca el archivo que le pasamos como par\'e1metro\par
+                                                //y lo devuelve como un flujo de bytes \par
+            if(in == null)\{\par
+                System.err.println("No se econtr\'f3 el application.properties");\par
+                return;\par
+            \}  \par
+            props.load(in);\par
+            //cargamos todas las propiedades en el props, es decir las combinaciones clave-valor                              \par
+        \} catch (Exception e) \{\par
+            System.err.println("Error cargando las properties: " + e.getMessage());\par
+        \}\par
+\par
+        //configuramos el pool de conexiones de HikariCP \par
+        HikariConfig config = new HikariConfig();\par
+        //configuramos la URL\par
+        config.setJdbcUrl(props.getProperty("spring.datasource.url"));\par
+        //configuramos el usuario\par
+        config.setUsername(props.getProperty("spring.datasource.username"));\par
+        //configuramos el password\par
+        config.setPassword(props.getProperty("spring.datasource.password"));\par
+\par
+        //creamos el DataSource con el pool de conexiones y probamos la conexi\'f3n\par
+        try (HikariDataSource ds = new HikariDataSource(config);\par
+                Connection conn = ds.getConnection()) \{ //obtenemos la conexi\'f3n\par
+            if(conn.isValid(2))\{\par
+                System.out.println("Conexi\'f3n exitosa a: " + conn.getMetaData().getURL());\par
+                //getMetaData obtiene la informaci\'f3n de la conexi\'f3n\par
+            \} else\{\par
+                System.err.println("La conexi\'f3n no es v\'e1lida");\par
+            \}\par
+        \} catch (Exception e) \{\par
+            System.err.println("No se pudo conectar " + e.getMessage());\par
+        \}\par
+\par
+\par
+    \}\par
+\}\par
+TestRepository\par
+package emprendimiento.natura.gilma.aguada.tests; \par
+\par
+import org.springframework.boot.SpringApplication;\par
+import org.springframework.boot.autoconfigure.SpringBootApplication;\par
+import org.springframework.context.ConfigurableApplicationContext;\par
+\par
+// Importaciones solo para Cliente \par
+import emprendimiento.natura.gilma.aguada.entidades.Cliente;\par
+import emprendimiento.natura.gilma.aguada.repositories.ClienteDAO;\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_ClienteRepository;\par
+\par
+@SpringBootApplication(scanBasePackages = "emprendimiento.natura.gilma.aguada") \par
+public class TestRepositories \{\par
+    public static void main(String[] args) \{\par
+\par
+        try (ConfigurableApplicationContext context = SpringApplication.run(TestRepositories.class, args);) \{\par
+\par
+          \par
+            I_ClienteRepository clienteDAO = context.getBean(ClienteDAO.class);\par
+\par
+            System.out.println("--- PRUEBAS DE REPOSITORIOS (Solo Cliente) ---");\par
+\par
+            // --- Pruebas para CLIENTE ---\par
+            System.out.println("\\n>>> Test Cliente: Creando un nuevo cliente");\par
+            // Para 'int idCliente', pasamos 0. \par
+            Cliente nuevoCliente = new Cliente(0, "Maria", "Gonzalez", "maria.g@example.com", "1122334455", "Av. Siempre Viva 742", "@mariagonzalez_ok");\par
+            clienteDAO.create(nuevoCliente); // Llama al m\'e9todo create del DAO\par
+\par
+        \par
+            if(nuevoCliente.getIdCliente() > 0)\{ // Usamos getIdCliente() para acceder al ID\par
+                System.out.println(" ## Cliente creado correctamente con ID: " + nuevoCliente.getIdCliente());\par
+                System.out.println(" \~ \~Datos: " + nuevoCliente);\par
+            \} else \{\par
+                System.err.println(" \'a1\'a1 ERROR - no se pudo crear al cliente o no se asign\'f3 un ID v\'e1lido !!");\par
+            \}\par
+\par
+            System.out.println("\\n>>> Test Cliente: Buscando cliente por ID (el reci\'e9n creado)");\par
+            Cliente clienteEncontrado = clienteDAO.findById(nuevoCliente.getIdCliente());\par
+            if(clienteEncontrado != null)\{\par
+                System.out.println(" ## Cliente encontrado: " + clienteEncontrado.getNombre() + " " + clienteEncontrado.getApellido() + " (ID: " + clienteEncontrado.getIdCliente() + ")"); // Usamos getIdCliente()\par
+            \} else \{\par
+                System.err.println(" \'a1\'a1 ERROR - Cliente con ID " + nuevoCliente.getIdCliente() + " no encontrado !!");\par
+            \}\par
+\par
+            System.out.println("\\n>>> Test Cliente: Actualizando el cliente");\par
+            if(clienteEncontrado != null)\{\par
+                clienteEncontrado.setTelefono("1199887766"); \par
+                int filasAfectadas = clienteDAO.update(clienteEncontrado);\par
+                if(filasAfectadas > 0)\{\par
+                    System.out.println(" ## Cliente con ID " + clienteEncontrado.getIdCliente() + " actualizado. Nuevo tel\'e9fono: " + clienteEncontrado.getTelefono());\par
+                \} else \{\par
+                    System.err.println(" \'a1\'a1 ERROR - No se pudo actualizar el cliente !!");\par
+                \}\par
+            \}\par
+\par
+            System.out.println("\\n>>> Test Cliente: Listando todos los clientes");\par
+            clienteDAO.findAll().forEach(c -> System.out.println(" \~ \~- " + c.getNombre() + " " + c.getApellido() + " (ID: " + c.getIdCliente() + ")")); // Usamos getIdCliente()\par
+\par
+            System.out.println("\\n--- PRUEBAS DE REPOSITORIOS FINALIZADAS ---");\par
+\par
+        \} catch (Exception e) \{\par
+            System.err.println("\'a1\'a1 ERROR GRAVE EN LA EJECUCI\'d3N DE LOS TESTS O LA BASE DE DATOS !!");\par
+            e.printStackTrace();\par
+        \}\par
+    \}\par
+\}\par
+ \cf2\b\fs32 TestRepository\cf0\b0\fs22\par
+package emprendimiento.natura.gilma.aguada.tests;\par
+\par
+import org.springframework.boot.SpringApplication;\par
+import org.springframework.boot.autoconfigure.SpringBootApplication;\par
+import org.springframework.context.ConfigurableApplicationContext;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.Cliente;\par
+import emprendimiento.natura.gilma.aguada.repositories.ClienteDAO;\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_ClienteRepository;\par
+\par
+@SpringBootApplication(scanBasePackages = "emprendimiento.natura.gilma.aguada")\par
+public class TestRepositories \{\par
+    public static void main(String[] args) \{\par
+\par
+        try (ConfigurableApplicationContext context = SpringApplication.run(TestRepositories.class, args);) \{\par
+\par
+            I_ClienteRepository clienteDAO = context.getBean(ClienteDAO.class);\par
+\par
+            System.out.println("--- PRUEBAS DE REPOSITORIOS (Solo Cliente) ---");\par
+\par
+            // --- Pruebas para CLIENTE ---\par
+            System.out.println("\\n>>> Test Cliente: Creando un nuevo cliente");\par
+            // Para 'int idCliente', pasamos 0.\par
+            Cliente nuevoCliente = new Cliente(0, "Maria", "Gonzalez", "maria.g@example.com", "1122334455",\par
+                    "Av. Siempre Viva 742", "@mariagonzalez_ok");\par
+            clienteDAO.create(nuevoCliente); // Llama al m\'e9todo create del DAO\par
+\par
+            if (nuevoCliente.getIdCliente() > 0) \{ // Usamos getIdCliente() para acceder al ID\par
+                System.out.println(" ## Cliente creado correctamente con ID: " + nuevoCliente.getIdCliente());\par
+                System.out.println(" \~ \~Datos: " + nuevoCliente);\par
+            \} else \{\par
+                System.err.println(" \'a1\'a1 ERROR - no se pudo crear al cliente o no se asign\'f3 un ID v\'e1lido !!");\par
+            \}\par
+\par
+            System.out.println("\\n>>> Test Cliente: Buscando cliente por ID (el reci\'e9n creado)");\par
+            Cliente clienteEncontrado = clienteDAO.findById(nuevoCliente.getIdCliente());\par
+            if (clienteEncontrado != null) \{\par
+                System.out.println(" ## Cliente encontrado: " + clienteEncontrado.getNombre() + " "\par
+                        + clienteEncontrado.getApellido() + " (ID: " + clienteEncontrado.getIdCliente() + ")"); // Usamos\par
+                                                                                                                // getIdCliente()\par
+            \} else \{\par
+                System.err.println(" \'a1\'a1 ERROR - Cliente con ID " + nuevoCliente.getIdCliente() + " no encontrado !!");\par
+            \}\par
+\par
+            System.out.println("\\n>>> Test Cliente: Actualizando el cliente");\par
+            if (clienteEncontrado != null) \{\par
+                clienteEncontrado.setTelefono("1199887766");\par
+                int filasAfectadas = clienteDAO.update(clienteEncontrado);\par
+                if (filasAfectadas > 0) \{\par
+                    System.out.println(" ## Cliente con ID " + clienteEncontrado.getIdCliente()\par
+                            + " actualizado. Nuevo tel\'e9fono: " + clienteEncontrado.getTelefono());\par
+                \} else \{\par
+                    System.err.println(" \'a1\'a1 ERROR - No se pudo actualizar el cliente !!");\par
+                \}\par
+            \}\par
+\par
+            System.out.println("\\n>>> Test Cliente: Listando todos los clientes");\par
+            clienteDAO.findAll().forEach(c -> System.out\par
+                    .println(" \~ \~- " + c.getNombre() + " " + c.getApellido() + " (ID: " + c.getIdCliente() + ")")); // Usamos\par
+                                                                                                                     // getIdCliente()\par
+\par
+            System.out.println("\\n--- PRUEBAS DE REPOSITORIOS FINALIZADAS ---");\par
+\par
+        \} catch (Exception e) \{\par
+            System.err.println("\'a1\'a1 ERROR GRAVE EN LA EJECUCI\'d3N DE LOS TESTS O LA BASE DE DATOS !!");\par
+            e.printStackTrace();\par
+        \}\par
+    \}\par
+\}\cf2\b\fs32\par
+}
+ 
