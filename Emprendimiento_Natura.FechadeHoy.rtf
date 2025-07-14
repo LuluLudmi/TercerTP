@@ -1,0 +1,433 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2058{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green176\blue80;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\b\f0\fs32\lang10 DAOs \cf0\b0\fs22\par
+package emprendimiento.natura.gilma.aguada.repositories;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.DetallePedido;\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_DetallePedidoRepository;\par
+\par
+import javax.sql.DataSource; // Para la gesti\'f3n de conexiones (pooling)\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+public class DetallePedidoDAO implements I_DetallePedidoRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Definici\'f3n de las consultas SQL, usando nombres de columnas en snake_case\par
+    // \'a1IMPORTANTE!: Estos nombres deben coincidir EXACTAMENTE con los de tu tabla 'detalle_pedidos' en la DB\par
+    private static final String SQL_INSERT = "INSERT INTO detalle_pedidos (id_pedido, id_producto, cantidad) VALUES (?, ?, ?)";\par
+    private static final String SQL_SELECT_BY_ID = "SELECT id_pedido, id_producto, cantidad FROM detalle_pedidos WHERE id_pedido = ? AND id_producto = ?";\par
+    private static final String SQL_SELECT_ALL = "SELECT id_pedido, id_producto, cantidad FROM detalle_pedidos";\par
+    private static final String SQL_UPDATE = "UPDATE detalle_pedidos SET cantidad = ? WHERE id_pedido = ? AND id_producto = ?";\par
+    private static final String SQL_DELETE = "DELETE FROM detalle_pedidos WHERE id_pedido = ? AND id_producto = ?";\par
+    private static final String SQL_SELECT_BY_PEDIDO = "SELECT id_pedido, id_producto, cantidad FROM detalle_pedidos WHERE id_pedido = ?";\par
+\par
+\par
+    // Constructor para inyectar el DataSource\par
+    public DetallePedidoDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear un ResultSet a un objeto DetallePedido\par
+    // Aqu\'ed es donde se "traducen" los nombres de columna de la DB (snake_case)\par
+    // a las propiedades del objeto Java (CamelCase)\par
+    private DetallePedido mapRow(ResultSet rs) throws SQLException \{\par
+        return new DetallePedido(\par
+            rs.getInt("id_pedido"),      // Columna DB: id_pedido -> Propiedad Java: idPedido\par
+            rs.getInt("id_producto"),    // Columna DB: id_producto -> Propiedad Java: idProducto\par
+            rs.getInt("cantidad")\par
+        );\par
+    \}\par
+\par
+    @Override\par
+    public void create(DetallePedido detallePedido) throws SQLException \{\par
+        // try-with-resources para asegurar que Connection y PreparedStatement se cierren autom\'e1ticamente\par
+        try (Connection conn = dataSource.getConnection();\par
+             // No se necesita Statement.RETURN_GENERATED_KEYS ya que las PKs no son auto-generadas aqu\'ed\par
+             PreparedStatement ps = conn.prepareStatement(SQL_INSERT)) \{\par
+\par
+            // Establece los par\'e1metros de la consulta usando los getters del objeto DetallePedido\par
+            ps.setInt(1, detallePedido.getIdPedido());\par
+            ps.setInt(2, detallePedido.getIdProducto());\par
+            ps.setInt(3, detallePedido.getCantidad());\par
+\par
+            ps.executeUpdate(); // Ejecuta la inserci\'f3n\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public DetallePedido findById(int idPedido, int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_ID)) \{\par
+            ps.setInt(1, idPedido);\par
+            ps.setInt(2, idProducto);\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs); // Si encuentra un resultado, lo mapea\par
+                \}\par
+            \}\par
+        \}\par
+        return null; // Si no encuentra, retorna null\par
+    \}\par
+\par
+    @Override\par
+    public List<DetallePedido> findAll() throws SQLException \{\par
+        List<DetallePedido> detalles = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{ // Ejecuta la consulta\par
+            while (rs.next()) \{\par
+                detalles.add(mapRow(rs)); // Itera y agrega todos los detalles encontrados\par
+            \}\par
+        \}\par
+        return detalles;\par
+    \}\par
+\par
+    @Override\par
+    public int update(DetallePedido detallePedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+            // Solo se actualiza la cantidad para una clave compuesta dada\par
+            ps.setInt(1, detallePedido.getCantidad());\par
+            // Las IDs de la clave compuesta se usan en la cl\'e1usula WHERE\par
+            ps.setInt(2, detallePedido.getIdPedido());\par
+            ps.setInt(3, detallePedido.getIdProducto());\par
+            return ps.executeUpdate(); // Ejecuta la actualizaci\'f3n\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idPedido, int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idPedido);\par
+            ps.setInt(2, idProducto);\par
+            return ps.executeUpdate(); // Ejecuta la eliminaci\'f3n\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<DetallePedido> findByPedido(int idPedido) throws SQLException \{\par
+        List<DetallePedido> detalles = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_PEDIDO)) \{\par
+            ps.setInt(1, idPedido); // Par\'e1metro para el ID del pedido\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    detalles.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return detalles;\par
+    \}\par
+\}\par
+DAOs Pedidos\par
+package emprendimiento.natura.gilma.aguada.repositories;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.Pedido;\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_PedidoRepository;\par
+import emprendimiento.natura.gilma.aguada.enums.EstadoPedido; // Importa tu enum EstadoPedido\par
+\par
+import javax.sql.DataSource; // Para la gesti\'f3n de conexiones (pooling)\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.sql.Statement;    // Necesario para Statement.RETURN_GENERATED_KEYS\par
+import java.sql.Timestamp;   // Para mapear tipos DATETIME de SQL a Java\par
+import java.util.ArrayList;\par
+import java.util.Date;       // Asumiendo que fechaPedido en la entidad Pedido es java.util.Date\par
+import java.util.List;\par
+\par
+public class PedidoDAO implements I_PedidoRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Definici\'f3n de las consultas SQL, usando nombres de columnas en snake_case\par
+    // \'a1IMPORTANTE!: Estos nombres deben coincidir EXACTAMENTE con los de tu tabla 'pedidos' en la DB\par
+    private static final String SQL_INSERT = "INSERT INTO pedidos (id_cliente, fecha_pedido, estado_pedido, total) VALUES (?, ?, ?, ?)";\par
+    private static final String SQL_SELECT_BY_ID = "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos WHERE id_pedido = ?";\par
+    private static final String SQL_SELECT_ALL = "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos";\par
+    private static final String SQL_UPDATE = "UPDATE pedidos SET id_cliente = ?, fecha_pedido = ?, estado_pedido = ?, total = ? WHERE id_pedido = ?";\par
+    private static final String SQL_DELETE = "DELETE FROM pedidos WHERE id_pedido = ?";\par
+    private static final String SQL_SELECT_BY_CLIENTE = "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos WHERE id_cliente = ?";\par
+    private static final String SQL_SELECT_BY_ESTADO = "SELECT id_pedido, id_cliente, fecha_pedido, estado_pedido, total FROM pedidos WHERE estado_pedido = ?";\par
+\par
+\par
+    // Constructor para inyectar el DataSource\par
+    public PedidoDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear un ResultSet a un objeto Pedido\par
+    // Aqu\'ed es donde se "traducen" los nombres de columna de la DB (snake_case)\par
+    // a las propiedades del objeto Java (CamelCase), y se manejan tipos especiales\par
+    private Pedido mapRow(ResultSet rs) throws SQLException \{\par
+        // Para fecha_pedido: convertir Timestamp (DB) a Date (Java)\par
+        Timestamp fechaPedidoTs = rs.getTimestamp("fecha_pedido");\par
+        Date fechaPedido = (fechaPedidoTs != null) ? new Date(fechaPedidoTs.getTime()) : null;\par
+\par
+        // Para estado_pedido: convertir String (DB) a EstadoPedido (Enum)\par
+        // Se asume que tienes el m\'e9todo fromDbValue en tu enum EstadoPedido\par
+        EstadoPedido estadoPedido = EstadoPedido.fromDbValue(rs.getString("estado_pedido"));\par
+\par
+        return new Pedido(\par
+            rs.getInt("id_pedido"),      // Columna DB: id_pedido -> Propiedad Java: idPedido\par
+            rs.getInt("id_cliente"),     // Columna DB: id_cliente -> Propiedad Java: idCliente\par
+            fechaPedido,\par
+            estadoPedido,\par
+            rs.getDouble("total")\par
+        );\par
+    \}\par
+\par
+    @Override\par
+    public void create(Pedido pedido) throws SQLException \{\par
+        // try-with-resources para asegurar que Connection y PreparedStatement se cierren autom\'e1ticamente\par
+        try (Connection conn = dataSource.getConnection();\par
+             // Statement.RETURN_GENERATED_KEYS es clave para obtener el ID auto-generado para 'id_pedido'\par
+             PreparedStatement ps = conn.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)) \{\par
+\par
+            // Establece los par\'e1metros de la consulta usando los getters del objeto Pedido\par
+            ps.setInt(1, pedido.getIdCliente());\par
+            ps.setTimestamp(2, new Timestamp(pedido.getFechaPedido().getTime())); // Convertir Date a Timestamp\par
+            ps.setString(3, pedido.getEstadoPedido().getDbValue()); // Usar el valor String del enum\par
+            ps.setDouble(4, pedido.getTotal());\par
+\par
+            ps.executeUpdate(); // Ejecuta la inserci\'f3n\par
+\par
+            // Recupera el ID auto-generado y lo asigna de nuevo al objeto Pedido\par
+            try (ResultSet keys = ps.getGeneratedKeys()) \{\par
+                if (keys.next()) \{\par
+                    pedido.setIdPedido(keys.getInt(1)); // El primer (y \'fanico) ID generado\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public Pedido findById(int idPedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_ID)) \{\par
+            ps.setInt(1, idPedido); // Establece el par\'e1metro ID\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs); // Si encuentra un resultado, lo mapea a Pedido\par
+                \}\par
+            \}\par
+        \}\par
+        return null; // Si no encuentra, retorna null\par
+    \}\par
+\par
+    @Override\par
+    public List<Pedido> findAll() throws SQLException \{\par
+        List<Pedido> pedidos = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{ // Ejecuta la consulta\par
+            while (rs.next()) \{\par
+                pedidos.add(mapRow(rs)); // Itera y agrega todos los pedidos encontrados\par
+            \}\par
+        \}\par
+        return pedidos;\par
+    \}\par
+\par
+    @Override\par
+    public int update(Pedido pedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+            // Establece los par\'e1metros para la actualizaci\'f3n\par
+            ps.setInt(1, pedido.getIdCliente());\par
+            ps.setTimestamp(2, new Timestamp(pedido.getFechaPedido().getTime())); // Convertir Date a Timestamp\par
+            ps.setString(3, pedido.getEstadoPedido().getDbValue()); // Usar el valor String del enum\par
+            ps.setDouble(4, pedido.getTotal());\par
+            ps.setInt(5, pedido.getIdPedido()); // El ID en la cl\'e1usula WHERE\par
+            return ps.executeUpdate(); // Ejecuta la actualizaci\'f3n y retorna filas afectadas\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idPedido) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idPedido); // Establece el par\'e1metro ID\par
+            return ps.executeUpdate(); // Ejecuta la eliminaci\'f3n y retorna filas afectadas\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<Pedido> findByCliente(int idCliente) throws SQLException \{\par
+        List<Pedido> pedidos = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_CLIENTE)) \{\par
+            ps.setInt(1, idCliente); // Par\'e1metro para el ID del cliente\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    pedidos.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return pedidos;\par
+    \}\par
+\par
+    @Override\par
+    public List<Pedido> findByEstado(EstadoPedido estado) throws SQLException \{\par
+        List<Pedido> pedidos = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_ESTADO)) \{\par
+            ps.setString(1, estado.getDbValue()); // Usar el valor String del enum para la comparaci\'f3n\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    pedidos.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return pedidos;\par
+    \}\par
+\}\par
+Daos Producto\par
+package emprendimiento.natura.gilma.aguada.repositories;\par
+\par
+import emprendimiento.natura.gilma.aguada.entidades.Producto;\par
+import emprendimiento.natura.gilma.aguada.repositories.interfaces.I_ProductoRepository;\par
+\par
+import javax.sql.DataSource; // Para la gesti\'f3n de conexiones (pooling)\par
+import java.sql.Connection;\par
+import java.sql.PreparedStatement;\par
+import java.sql.ResultSet;\par
+import java.sql.SQLException;\par
+import java.sql.Statement;    // Necesario para Statement.RETURN_GENERATED_KEYS\par
+import java.util.ArrayList;\par
+import java.util.List;\par
+\par
+public class ProductoDAO implements I_ProductoRepository \{\par
+\par
+    private final DataSource dataSource;\par
+\par
+    // Definici\'f3n de las consultas SQL, usando nombres de columnas en snake_case\par
+    // \'a1IMPORTANTE!: Estos nombres deben coincidir EXACTAMENTE con los de tu tabla 'productos' en la DB\par
+    private static final String SQL_INSERT = "INSERT INTO productos (nombre, descripcion, precio_costo, precio_venta, stock) VALUES (?, ?, ?, ?, ?)";\par
+    private static final String SQL_SELECT_BY_ID = "SELECT id_producto, nombre, descripcion, precio_costo, precio_venta, stock FROM productos WHERE id_producto = ?";\par
+    private static final String SQL_SELECT_ALL = "SELECT id_producto, nombre, descripcion, precio_costo, precio_venta, stock FROM productos";\par
+    private static final String SQL_UPDATE = "UPDATE productos SET nombre = ?, descripcion = ?, precio_costo = ?, precio_venta = ?, stock = ? WHERE id_producto = ?";\par
+    private static final String SQL_DELETE = "DELETE FROM productos WHERE id_producto = ?";\par
+    private static final String SQL_SELECT_BY_NOMBRE = "SELECT id_producto, nombre, descripcion, precio_costo, precio_venta, stock FROM productos WHERE nombre LIKE ?";\par
+\par
+\par
+    // Constructor para inyectar el DataSource\par
+    public ProductoDAO(DataSource dataSource) \{\par
+        this.dataSource = dataSource;\par
+    \}\par
+\par
+    // M\'e9todo auxiliar para mapear un ResultSet a un objeto Producto\par
+    // Aqu\'ed es donde se "traducen" los nombres de columna de la DB (snake_case)\par
+    // a las propiedades del objeto Java (CamelCase)\par
+    private Producto mapRow(ResultSet rs) throws SQLException \{\par
+        return new Producto(\par
+            rs.getInt("id_producto"),      // Columna DB: id_producto -> Propiedad Java: idProducto\par
+            rs.getString("nombre"),\par
+            rs.getString("descripcion"),\par
+            rs.getDouble("precio_costo"), // Columna DB: precio_costo -> Propiedad Java: precioCosto\par
+            rs.getDouble("precio_venta"), // Columna DB: precio_venta -> Propiedad Java: precioVenta\par
+            rs.getInt("stock")\par
+        );\par
+    \}\par
+\par
+    @Override\par
+    public void create(Producto producto) throws SQLException \{\par
+        // try-with-resources para asegurar que Connection y PreparedStatement se cierren autom\'e1ticamente\par
+        try (Connection conn = dataSource.getConnection();\par
+             // Statement.RETURN_GENERATED_KEYS es clave para obtener el ID auto-generado para 'id_producto'\par
+             PreparedStatement ps = conn.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)) \{\par
+\par
+            // Establece los par\'e1metros de la consulta usando los getters del objeto Producto\par
+            ps.setString(1, producto.getNombre());\par
+            ps.setString(2, producto.getDescripcion());\par
+            ps.setDouble(3, producto.getPrecioCosto());\par
+            ps.setDouble(4, producto.getPrecioVenta());\par
+            ps.setInt(5, producto.getStock());\par
+\par
+            ps.executeUpdate(); // Ejecuta la inserci\'f3n\par
+\par
+            // Recupera el ID auto-generado y lo asigna de nuevo al objeto Producto\par
+            try (ResultSet keys = ps.getGeneratedKeys()) \{\par
+                if (keys.next()) \{\par
+                    producto.setIdProducto(keys.getInt(1)); // El primer (y \'fanico) ID generado\par
+                \}\par
+            \}\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public Producto findById(int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_ID)) \{\par
+            ps.setInt(1, idProducto); // Establece el par\'e1metro ID\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                if (rs.next()) \{\par
+                    return mapRow(rs); // Si encuentra un resultado, lo mapea a Producto\par
+                \}\par
+            \}\par
+        \}\par
+        return null; // Si no encuentra, retorna null\par
+    \}\par
+\par
+    @Override\par
+    public List<Producto> findAll() throws SQLException \{\par
+        List<Producto> productos = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_ALL);\par
+             ResultSet rs = ps.executeQuery()) \{ // Ejecuta la consulta\par
+            while (rs.next()) \{\par
+                productos.add(mapRow(rs)); // Itera y agrega todos los productos encontrados\par
+            \}\par
+        \}\par
+        return productos;\par
+    \}\par
+\par
+    @Override\par
+    public int update(Producto producto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) \{\par
+            // Establece los par\'e1metros para la actualizaci\'f3n\par
+            ps.setString(1, producto.getNombre());\par
+            ps.setString(2, producto.getDescripcion());\par
+            ps.setDouble(3, producto.getPrecioCosto());\par
+            ps.setDouble(4, producto.getPrecioVenta());\par
+            ps.setInt(5, producto.getStock());\par
+            ps.setInt(6, producto.getIdProducto()); // El ID en la cl\'e1usula WHERE\par
+            return ps.executeUpdate(); // Ejecuta la actualizaci\'f3n y retorna filas afectadas\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public int delete(int idProducto) throws SQLException \{\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) \{\par
+            ps.setInt(1, idProducto); // Establece el par\'e1metro ID\par
+            return ps.executeUpdate(); // Ejecuta la eliminaci\'f3n y retorna filas afectadas\par
+        \}\par
+    \}\par
+\par
+    @Override\par
+    public List<Producto> findByNombre(String nombre) throws SQLException \{\par
+        List<Producto> productos = new ArrayList<>();\par
+        try (Connection conn = dataSource.getConnection();\par
+             PreparedStatement ps = conn.prepareStatement(SQL_SELECT_BY_NOMBRE)) \{\par
+            ps.setString(1, "%" + nombre + "%"); // Usa LIKE para b\'fasqueda parcial (contiene)\par
+            try (ResultSet rs = ps.executeQuery()) \{\par
+                while (rs.next()) \{\par
+                    productos.add(mapRow(rs));\par
+                \}\par
+            \}\par
+        \}\par
+        return productos;\par
+    \}\par
+\}\par
+}
+ 
